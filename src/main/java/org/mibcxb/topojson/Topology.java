@@ -48,7 +48,7 @@ public class Topology {
 
     @Override
     public String toString() {
-        return "McTopology [type=" + type + ", transform=" + transform
+        return "Topology [type=" + type + ", transform=" + transform
                 + ", objects=" + objects + ", arcs=" + Arrays.toString(arcs)
                 + "]";
     }

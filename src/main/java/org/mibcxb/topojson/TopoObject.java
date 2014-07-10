@@ -61,7 +61,7 @@ public class TopoObject {
 
     @Override
     public String toString() {
-        return "McGeometry [type=" + type + ", coordinates="
+        return "TopoObject [type=" + type + ", coordinates="
                 + Arrays.toString(coordinates) + ", arcs=" + arcs + ", id="
                 + id + ", geometries=" + Arrays.toString(geometries)
                 + ", properties=" + properties + "]";

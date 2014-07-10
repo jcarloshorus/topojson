@@ -24,7 +24,7 @@ public class Transform {
 
     @Override
     public String toString() {
-        return "McTransform [scale=" + Arrays.toString(scale) + ", translate="
+        return "Transform [scale=" + Arrays.toString(scale) + ", translate="
                 + Arrays.toString(translate) + "]";
     }
 }
