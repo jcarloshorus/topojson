@@ -119,7 +119,7 @@ public class McTopoJSON {
             if (posArray != null) {
                 int[] position = new int[posArray.length];
                 for (int i = 0; i < position.length; i++) {
-                    position[i] = object2Integer(posArray[i]);
+                    position[i] = toInteger(posArray[i]);
                 }
                 Coordinate coordinate = decodePosition(transform, position);
                 if (coordinate != null) {
@@ -130,7 +130,7 @@ public class McTopoJSON {
             Object[] arcs = object.getArcs();
             if (arcs != null) {
                 for (int i = 0; i < arcs.length; i++) {
-                    Integer index = object2Integer(arcs[i]);
+                    Integer index = toInteger(arcs[i]);
                     if (index != null) {
                         if (index < 0) {
                             index += coordArcs.size();
@@ -147,7 +147,7 @@ public class McTopoJSON {
                 if (arcs[0] instanceof List<?>) {
                     List<?> shellIndex = (List<?>) arcs[0];
                     for (int i = 0; i < shellIndex.size(); i++) {
-                        Integer index = object2Integer(shellIndex.get(i));
+                        Integer index = toInteger(shellIndex.get(i));
                         if (index != null) {
                             if (index < 0) {
                                 index += coordArcs.size();
@@ -167,7 +167,7 @@ public class McTopoJSON {
                         if (arcs[i] instanceof List<?>) {
                             List<?> holeIndex = (List<?>) arcs[i];
                             for (int j = 0; j < holeIndex.size(); j++) {
-                                Integer index = object2Integer(holeIndex.get(j));
+                                Integer index = toInteger(holeIndex.get(j));
                                 if (index != null) {
                                     if (index < 0) {
                                         index += coordArcs.size();
@@ -220,7 +220,7 @@ public class McTopoJSON {
         if (transform == null || posision == null) {
             return null;
         }
-        if (posision.length > 2) {
+        if (posision.length != 2) {
             return null;
         }
         final double[] scale = transform.getScale();
@@ -259,7 +259,7 @@ public class McTopoJSON {
         return null;
     }
 
-    public static Integer object2Integer(Object obj) {
+    public static Integer toInteger(Object obj) {
         Integer value = null;
         if (obj instanceof Integer) {
             value = (Integer) obj;
@@ -277,7 +277,6 @@ public class McTopoJSON {
                 value = Integer.parseInt(s);
             } catch (NumberFormatException e) {
                 e.printStackTrace();
-                value = null;
             }
         }
         return value;
